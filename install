@@ -1,0 +1,30 @@
+pacman update && upgrade before all!
+
+monkeysphere (depends on yaourt)
+
+git
+tmux
+zsh
+gpg / pinentry?
+monkeysphere (depends on yaourt)
+prezto/dotfiles (depends on git, monkeysphere)
+
+wget, iftop, python
+
+postgresql
+java
+sonar (depends on java, yaourt)
+create postgre DB + local & remote connection (+rights)
+
+transmission
+
+nginx
+nginx config for all to 444 (depends on nginx)
+nginx config for transmission + password (depends on nginx, transmission)
+nginx config for sonar (depends on nginx, sonar)
+
+user makkhdyn (re-prezto/dotiles!)
+
+sudo changes to enable tmux/ssh
+
+Change SSH port
