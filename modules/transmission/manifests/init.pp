@@ -14,13 +14,18 @@ class transmission{
         restart    => '/usr/bin/killall -HUP transmission-daemon',
     }
 
+    file {["${conf_dir}/../", "${conf_dir}"]:
+        ensure  => directory,
+        owner   => 'transmission',
+        group   => 'transmission',
+        require => Package['transmission'],
+    }->
     file {"${conf_dir}/settings.json":
-        ensure  => present,
+        ensure  => file,
         mode    => '0644',
         content => template("transmission/settings.json.erb"),
         owner   => 'transmission',
         group   => 'transmission',
-        require => Package['transmission'],
         notify  => Service['transmission'],
     }
 }
