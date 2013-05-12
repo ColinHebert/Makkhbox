@@ -17,3 +17,9 @@ nginx::site {'transmission':
     content => template('makkhbox/nginx/transmission.conf.erb'),
     require => Service['transmission']
 }
+
+## Root settings
+user {'root':
+    shell => '/bin/zsh',
+    require => Package['zsh']
+}
