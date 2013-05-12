@@ -23,3 +23,12 @@ user {'root':
     shell => '/bin/zsh',
     require => Package['zsh']
 }
+
+## Custom user
+user {'makkhdyn':
+    shell => '/bin/zsh',
+    managehome => true,
+    ensure => present,
+    groups => ['transmission', 'wheel'],
+    require => Package['zsh', 'transmission'],
+}
