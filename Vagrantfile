@@ -23,7 +23,7 @@ Vagrant.configure("2") do |config|
         # within the machine from a port on the host machine. In the example below,
         # accessing "localhost:8080" will access port 80 on the guest machine.
         override.vm.network :forwarded_port, guest: 80, host: 8080
-        override.vm.network :forwarded_port, guest: 2222, host: 5331
+        override.vm.network :forwarded_port, guest: 22, host: 5331
         override.vm.network :forwarded_port, guest: 9091, host: 9091
 
         vb.customize ["modifyvm", :id, "--memory", "512", "--cpus", "1"]
