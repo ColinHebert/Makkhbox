@@ -21,6 +21,9 @@ if ! type puppet > /dev/null ; then
     echo 'Installing Puppet.'
     yaourt --noconfirm -S puppet
     echo 'Puppet installed'
+
+    echo 'Installing hiera-gpg and hiera-file'
+    gem install hiera-gpg hiera-file
 fi
 
 ################
