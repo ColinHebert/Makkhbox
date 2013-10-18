@@ -44,8 +44,6 @@ Vagrant.configure("2") do |config|
         puppet.hiera_config_path = "puppet/hiera.yaml"
         puppet.working_directory = "/vagrant/puppet"
         puppet.options           = "--verbose --debug"
-        puppet.facter = {
-            "env" => config.custom.environment,
-        }
+        puppet.facter["env"]     = config.custom.environment
     end
 end
