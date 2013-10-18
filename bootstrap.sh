@@ -6,6 +6,18 @@ if [ "$EUID" -ne '0' ] ; then
     exit 1
 fi
 
+####################
+# Set up Reflector #
+####################
+if ! type reflector > /dev/null 2>&1; then
+    echo 'Installing Reflector.'
+    pacman --noconfirm -Sy reflector
+    echo 'Reflector installed'
+
+    echo 'Sorting the list of mirrors'
+    reflector --sort rate --save /etc/pacman.d/mirrorlist
+fi
+
 #################
 # Set up Puppet #
 #################
