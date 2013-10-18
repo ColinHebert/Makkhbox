@@ -21,9 +21,9 @@ fi
 #################
 # Set up Puppet #
 #################
-if ! type puppet > /dev/null ; then
+if ! type puppet > /dev/null 2>&1; then
 
-    if ! type yaourt > /dev/null; then
+    if ! type yaourt > /dev/null 2>&1; then
         echo 'Installing Yaourt.'
         echo -e '[archlinuxfr]\nSigLevel = Never\nServer = http://repo.archlinux.fr/$arch' >> /etc/pacman.conf
         pacman --noconfirm -Sy yaourt base-devel
@@ -41,7 +41,7 @@ fi
 ################
 # Set up GnuPG #
 ################
-if ! type gpg > /dev/null; then
+if ! type gpg > /dev/null 2>&1; then
     echo 'Installing GnuPG.'
 
     pacman --noconfirm -Sy gnupg rnd-tools
