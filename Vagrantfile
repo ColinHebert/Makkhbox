@@ -14,6 +14,7 @@ end
 
 Vagrant.configure("2") do |config|
     config.ssh.shell = "/bin/zsh -l"
+    config.custom.hiera = "hiera.yaml"
 
     # The url from where the 'config.vm.box' box will be fetched if it
     # doesn't already exist on the user's system.
@@ -27,6 +28,7 @@ Vagrant.configure("2") do |config|
 
     config.vm.provider :virtualbox do |vb, override|
         override.vm.box = "Arch_Linux_2013.08_x64"
+        override.custom.hiera = "hiera-dev.yaml"
 
         # Create a forwarded port mapping which allows access to a specific port
         # within the machine from a port on the host machine. In the example below,
@@ -49,6 +51,6 @@ Vagrant.configure("2") do |config|
         puppet.module_path    = "puppet/modules"
         puppet.manifests_path = "puppet/manifests"
         puppet.manifest_file  = "makkhbox.pp"
-        puppet.options        = "--verbose --debug --hiera_config /vagrant/puppet/hiera.yml"
+        puppet.options        = "--verbose --debug --hiera_config /vagrant/puppet/#{config.custom.hiera}"
     end
 end
