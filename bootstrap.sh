@@ -64,7 +64,8 @@ if ! type rngd > /dev/null 2>&1; then
         %commit
         %echo done
 EOF)
+    echo 'GPG key generated.'
 fi
 
-echo 'GPG key'
+echo 'GPG key:'
 gpg --export -a
