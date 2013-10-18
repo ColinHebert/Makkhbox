@@ -1,13 +1,12 @@
 {
     "blocklist-enabled": true,
-    "blocklist-url": "http://www.bluetack.co.uk/config/level1.gz",
+    "blocklist-url": "<%= scope.lookupvar('transmission::params::blocklist_url') %>",
     "encryption": 2,
     "peer-port-random-on-start": true,
     "ratio-limit": 0.0098,
     "ratio-limit-enabled": true,
     "rpc-authentication-required": false,
-    "//TODO": "Set username/password",
-    "rpc-password": "test",
-    "rpc-username": "makkhdyn",
+    "rpc-password": "<%= scope.lookupvar('transmission::params::rpc_user') %>",
+    "rpc-username": "<%= scope.lookupvar('transmission::params::rpc_password') %>",
     "speed-limit-up-enabled": true
 }
