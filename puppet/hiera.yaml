@@ -1,7 +1,7 @@
 :hierarchy:
-    - %{env}/%{location}/%{calling_module}
-    - %{env}/%{calling_module}
-    - common
+    - '%{::env}/%{calling_module}'
+    - '%{calling_module}'
+    - 'common'
 
 :backends:
     - gpg
@@ -10,14 +10,14 @@
 
 :gpg:
     :datadir:
-        /vagrant/puppet/hieradata
+        hieradata
 
 :yaml:
     :datadir:
-        /vagrant/puppet/hieradata
+        hieradata
 
 :file:
     :interpolate:
         false
     :datadir:
-        /vagrant/puppet/hieradata
+        hieradata
