@@ -16,16 +16,6 @@ Vagrant.configure("2") do |config|
     config.ssh.shell = "/bin/zsh -l"
     config.custom.hiera = "hiera.yaml"
 
-    # The url from where the 'config.vm.box' box will be fetched if it
-    # doesn't already exist on the user's system.
-    #config.vm.box_url = "http://vagrant.pouss.in/archlinux_2012-07-02.box"
-
-    # Share an additional folder to the guest VM. The first argument is
-    # the path on the host to the actual folder. The second argument is
-    # the path on the guest to mount the folder. And the optional third
-    # argument is a set of non-required options.
-    # config.vm.synced_folder "../data", "/vagrant_data"
-
     config.vm.provider :virtualbox do |vb, override|
         override.vm.box = "Arch_Linux_2013.08_x64"
         override.custom.hiera = "hiera-dev.yaml"
