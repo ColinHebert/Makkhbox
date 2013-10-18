@@ -31,7 +31,7 @@ if ! type puppet > /dev/null 2>&1; then
     fi
 
     echo 'Installing Puppet.'
-    yaourt --noconfirm -S puppet
+    yaourt --noconfirm -Sy puppet
     echo 'Puppet installed'
 
     echo 'Installing hiera-gpg and hiera-file'
