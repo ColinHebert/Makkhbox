@@ -43,8 +43,13 @@ fi
 ################
 if ! type gpg > /dev/null 2>&1; then
     echo 'Installing GnuPG.'
+    pacman --noconfirm -Sy gnupg  
+    echo 'GnuPG installed.'
+fi
 
-    pacman --noconfirm -Sy gnupg rnd-tools
+if ! type rngd > /dev/null 2>&1; then
+    echo 'Generating a GPG key.'
+    pacman --noconfirm -Sy rng-tools
 
     rngd -r /dev/urandom
 
