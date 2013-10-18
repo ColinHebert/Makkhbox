@@ -1,4 +1,5 @@
 Vagrant.configure("2") do |config|
+    config.ssh.shell = "/bin/zsh -l"
     config.vm.box = "Arch_Linux_2013.03_x64"
 
     # The url from where the 'config.vm.box' box will be fetched if it
