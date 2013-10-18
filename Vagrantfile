@@ -38,9 +38,9 @@ Vagrant.configure("2") do |config|
     config.vm.provision :shell, :path => "bootstrap.sh"
 
     config.vm.provision :puppet do |puppet|
-        puppet.module_path    = "puppet/modules"
-        puppet.manifests_path = "puppet/manifests"
-        puppet.manifest_file  = "makkhbox.pp"
+        puppet.module_path       = "puppet/modules"
+        puppet.manifests_path    = "puppet/manifests"
+        puppet.manifest_file     = "makkhbox.pp"
         puppet.hiera_config_path = "puppet/hiera.yaml"
         puppet.working_directory = "/vagrant/puppet"
         puppet.options           = "--verbose --debug"

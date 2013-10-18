@@ -38,14 +38,14 @@ if ! type gpg > /dev/null; then
 
     # Generate a GPG key
     gpg --batch --gen-key <(cat << EOF
-    %echo Generating a default key
-    Key-Type: default
-    Subkey-Type: default
-    Name-Real: $USER@$(hostname)
-    Name-Comment: Puppet key for $USER on $(hostname)
-    Expire-Date: 0
-    %commit
-    %echo done
+        %echo Generating a default key
+        Key-Type: default
+        Subkey-Type: default
+        Name-Real: $USER@$(hostname)
+        Name-Comment: Puppet key for $USER on $(hostname)
+        Expire-Date: 0
+        %commit
+        %echo done
 EOF)
 fi
 
