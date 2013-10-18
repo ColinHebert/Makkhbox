@@ -1,3 +1,17 @@
+module CustomConfiguration
+    class Config < Vagrant.plugin("2", :config)
+        attr_accessor :hiera
+    end
+
+    class Plugin < Vagrant.plugin("2")
+        name 'Custom configuration variables plugin'
+
+        config 'custom'  do
+            Config
+        end
+    end
+end
+
 Vagrant.configure("2") do |config|
     config.ssh.shell = "/bin/zsh -l"
 
