@@ -2,10 +2,10 @@ class transmission::params {
     $user  = 'transmission',
     $group = 'transmission',
 
-    $rpc_user     = 'user',
-    $rpc_password = 'password',
+    $rpc_user     = hiera('rpc_user'),
+    $rpc_password = hiera('rpc_password'),
 
-    $blocklist_url = 'http://www.bluetack.co.uk/config/level1.gz',
+    $blocklist_url = hiera('blocklist_url'),
 
     $conf_dir = '/var/lib/transmission/.config/transmission-daemon',
 }
