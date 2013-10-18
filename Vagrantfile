@@ -30,6 +30,6 @@ Vagrant.configure("2") do |config|
         puppet.module_path    = "puppet/modules"
         puppet.manifests_path = "puppet/manifests"
         puppet.manifest_file  = "makkhbox.pp"
-        puppet.options        = "--verbose --debug"
+        puppet.options        = "--verbose --debug --hiera_config /vagrant/puppet/hiera.yml"
     end
 end

@@ -1,0 +1,23 @@
+:hierarchy:
+    - %{env}/%{location}/%{calling_module}
+    - %{env}/%{calling_module}
+    - common
+
+:backends:
+    - gpg
+    - yaml
+    - file
+
+:gpg:
+    :datadir:
+        /vagrant/puppet/hieradata
+
+:yaml:
+    :datadir:
+        /vagrant/puppet/hieradata
+
+:file:
+    :interpolate:
+        false
+    :datadir:
+        /vagrant/puppet/hieradata
