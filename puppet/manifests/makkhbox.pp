@@ -22,6 +22,10 @@ nginx::site {'transmission':
 user {'root':
     shell => '/bin/zsh',
     require => Package['zsh']
+}->
+dotfiles::forUser {'root':
+    ensure => present,
+    branch  => 'makkhbox',
 }
 
 ## Custom user
@@ -31,4 +35,8 @@ user {'makkhdyn':
     ensure => present,
     groups => ['transmission', 'wheel'],
     require => Package['zsh', 'transmission'],
+}->
+dotfiles::forUser {'makkhdyn':
+    ensure  => present,
+    branch  => 'makkhbox',
 }
