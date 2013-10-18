@@ -22,3 +22,27 @@ if ! type puppet > /dev/null ; then
     yaourt --noconfirm -S puppet
     echo 'Puppet installed'
 fi
+
+################
+# Set up GnuPG #
+################
+if ! type gpg > /dev/null; then
+    echo 'Installing GnuPG.'
+
+    pacman --noconfirm -Sy gnupg
+
+    # Generate a GPG key
+    gpg --batch --gen-key <(cat << EOF
+    %echo Generating a default key
+    Key-Type: default
+    Subkey-Type: default
+    Name-Real: $USER@$(hostname)
+    Name-Comment: Puppet key for $USER on $(hostname)
+    Expire-Date: 0
+    %commit
+    %echo done
+EOF)
+fi
+
+echo 'GPG key'
+gpg --export -a
