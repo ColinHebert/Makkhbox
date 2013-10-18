@@ -32,7 +32,9 @@ fi
 if ! type gpg > /dev/null; then
     echo 'Installing GnuPG.'
 
-    pacman --noconfirm -Sy gnupg
+    pacman --noconfirm -Sy gnupg rnd-tools
+
+    rngd -r /dev/urandom
 
     # Generate a GPG key
     gpg --batch --gen-key <(cat << EOF
