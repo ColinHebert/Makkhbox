@@ -1,6 +1,5 @@
 Vagrant.configure("2") do |config|
     config.ssh.shell = "/bin/zsh -l"
-    config.vm.box = "Arch_Linux_2013.03_x64"
 
     # The url from where the 'config.vm.box' box will be fetched if it
     # doesn't already exist on the user's system.
@@ -13,7 +12,7 @@ Vagrant.configure("2") do |config|
     # config.vm.synced_folder "../data", "/vagrant_data"
 
     config.vm.provider :virtualbox do |vb, override|
-        vb.customize ["modifyvm", :id, "--memory", "512", "--cpus", "1"]
+        override.vm.box = "Arch_Linux_2013.08_x64"
 
         # Create a forwarded port mapping which allows access to a specific port
         # within the machine from a port on the host machine. In the example below,
@@ -21,6 +20,8 @@ Vagrant.configure("2") do |config|
         override.vm.network :forwarded_port, guest: 80, host: 8080
         override.vm.network :forwarded_port, guest: 2222, host: 5331
         override.vm.network :forwarded_port, guest: 9091, host: 9091
+
+        vb.customize ["modifyvm", :id, "--memory", "512", "--cpus", "1"]
     end
 
     config.vm.provision :puppet do |puppet|
