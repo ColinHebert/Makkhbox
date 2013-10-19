@@ -3,5 +3,5 @@ exec {'pacman -Sy ':}->Package <| |>
 
 include transmission
 #include dotfiles
-#include nginx
+include nginx
 #include makkbox
