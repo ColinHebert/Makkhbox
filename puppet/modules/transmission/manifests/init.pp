@@ -14,8 +14,8 @@ class transmission (
   validate_string($blocklist_url)
 
   anchor { 'transmission::begin': } ->
-  class { '::transmission::install': } ->
-  class { '::transmission::config': } ~>
-  class { '::transmission::service': } ->
+  class  { '::transmission::install': } ->
+  class  { '::transmission::config': } ~>
+  class  { '::transmission::service': } ->
   anchor { 'transmission::end': }
 }
