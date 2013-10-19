@@ -1,5 +1,5 @@
 class nginx::config inherits nginx {
-        file {"${conf_dir}/nginx.conf":
+    file {"${conf_dir}/nginx.conf":
         ensure  => present,
         mode    => '0644',
         owner   => 'root',
@@ -22,7 +22,4 @@ class nginx::config inherits nginx {
     file {"${conf_dir}/fastcgi_params":
         ensure  => absent,
     }
-
 }
-
-
