@@ -1,11 +1,9 @@
-class dotfiles{
-    package {'git':
-        ensure => installed
-    }
-    package {'tmux':
-        ensure => installed
-    }
-    package {'zsh':
-        ensure => installed
-    }
+class dotfiles (
+    $dependencies = $dotfiles::params::dependencies
+) inherits dotfiles::params {
+    validate_array($dependencies)
+
+    anchor { 'dotfiles::begin': } ->
+    class  { '::dotfiles::install': } ->
+    anchor { 'dotfiles::end': }
 }
