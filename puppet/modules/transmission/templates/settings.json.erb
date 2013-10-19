@@ -1,12 +1,13 @@
 {
     "blocklist-enabled": true,
-    "blocklist-url": "<%= scope.lookupvar('transmission::params::blocklist_url') %>",
+    "blocklist-url": "<%= @blocklist_url %>",
     "encryption": 2,
     "peer-port-random-on-start": true,
     "ratio-limit": 0.0098,
     "ratio-limit-enabled": true,
-    "rpc-authentication-required": false,
-    "rpc-password": "<%= scope.lookupvar('transmission::params::rpc_user') %>",
-    "rpc-username": "<%= scope.lookupvar('transmission::params::rpc_password') %>",
-    "speed-limit-up-enabled": true
+    "rpc-authentication-required": true,
+    "rpc-password": "<%= @rpc_user %>",
+    "rpc-username": "<%= @rpc_password %>",
+    "speed-limit-up-enabled": true,
+    "rpc-whitelist-enabled": false
 }

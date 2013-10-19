@@ -1,18 +1,15 @@
-class transmission::config {
-    require transmission::install
-
-    file {["${transmission::params::conf_dir}/../", "${transmission::params::conf_dir}"]:
+class transmission::config inherits transmission {
+    file { ["${conf_dir}",  "${conf_dir}/transmission-daemon"]:
         ensure  => directory,
-        owner   => $transmission::params::user,
-        group   => $transmission::params::group,
-        require => Package['transmission'],
+        owner   => $service_user,
+        group   => $service_group,
     }->
-    file {"${transmission::params::conf_dir}/settings.json":
+    file { "${conf_dir}/transmission-daemon/settings.json":
         ensure  => file,
-        mode    => '0644',
+        mode    => '0600',
         content => template("transmission/settings.json.erb"),
-        owner   => $transmission::params::user,
-        group   => $transmission::params::group,
+        owner   => $service_user,
+        group   => $service_group,
         notify  => Service['transmission'],
     }
 }

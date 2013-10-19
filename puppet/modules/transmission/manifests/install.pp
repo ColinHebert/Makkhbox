@@ -1,6 +1,6 @@
-class transmission::install {
-    ## Install and start transmission
-    package {'transmission':
+class transmission::install inherits transmission {
+    ## Install transmission
+    package { 'transmission':
         ensure => installed,
         name   => 'transmission-cli',
     }
