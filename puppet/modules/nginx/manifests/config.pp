@@ -4,7 +4,7 @@ class nginx::config inherits nginx {
         mode    => '0644',
         owner   => 'root',
         group   => 'root',
-        content => template('nginx/nginx.conf.erb'),
+        source  => 'puppet:///modules/nginx/nginx.conf',
         notify  => Service['nginx'],
     }
 
