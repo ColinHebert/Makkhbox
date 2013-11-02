@@ -18,17 +18,21 @@ Vagrant.configure("2") do |config|
     # Installs puppet and GPG (for hieraGPG)
     config.vm.provision :shell, :path => "bootstrap.sh"
 
-    config.vm.provider :virtualbox do |vb, override|
-        override.vm.box = "Arch_Linux_2013.08_x64"
+    # MakkhBox
+    config.vm.define :makkhbox, primary: true do |makkhbox|
+        makkhbox.custom.hostname = "makkhbox"
+        makkhbox.vm.provider :virtualbox do |vb, override|
+            override.vm.box = "Arch_Linux_2013.08_x64"
 
-        # Create a forwarded port mapping which allows access to a specific port
-        # within the machine from a port on the host machine. In the example below,
-        # accessing "localhost:8080" will access port 80 on the guest machine.
-        override.vm.network :forwarded_port, guest: 80, host: 8080
-        override.vm.network :forwarded_port, guest: 22, host: 5331
-        override.vm.network :forwarded_port, guest: 9091, host: 9091
+            # Create a forwarded port mapping which allows access to a specific port
+            # within the machine from a port on the host machine. In the example below,
+            # accessing "localhost:8080" will access port 80 on the guest machine.
+            override.vm.network :forwarded_port, guest: 80, host: 8080
+            override.vm.network :forwarded_port, guest: 22, host: 5331
+            override.vm.network :forwarded_port, guest: 9091, host: 9091
 
-        vb.customize ["modifyvm", :id, "--memory", "512", "--cpus", "1"]
+            vb.customize ["modifyvm", :id, "--memory", "512", "--cpus", "1"]
+        end
     end
 
     config.vm.provider :managed do |managed, override|
