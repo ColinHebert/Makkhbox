@@ -35,6 +35,15 @@ Vagrant.configure("2") do |config|
         end
     end
 
+    # Raspberry Pi Media Center
+    config.vm.define :makkhpi do |makkhpi|
+        makkhpi.custom.hostname = "makkhpi"
+        #TODO: QEMU/libvirt configuration
+        #makkhpi.vm.provider :kvm do |kvm, override|
+        #    kvm.qemu_bin = "qemu-system-arm"
+        #end
+    end
+
     # Configuration to provision production environment from Vagrant
     config.vm.provider :managed do |managed, override|
         managed.server              = config.custom.hostname
