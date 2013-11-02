@@ -1,6 +1,7 @@
 module CustomConfiguration
     class Config < Vagrant.plugin("2", :config)
         attr_accessor :environment
+        attr_accessor :hostname
     end
 
     class Plugin < Vagrant.plugin("2")
