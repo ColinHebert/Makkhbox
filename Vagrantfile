@@ -15,6 +15,8 @@ end
 
 Vagrant.configure("2") do |config|
     config.custom.environment = "dev"
+    # Installs puppet and GPG (for hieraGPG)
+    config.vm.provision :shell, :path => "bootstrap.sh"
 
     config.vm.provider :virtualbox do |vb, override|
         override.vm.box = "Arch_Linux_2013.08_x64"
@@ -35,8 +37,6 @@ Vagrant.configure("2") do |config|
         override.vm.box_url         = "https://github.com/tknerr/vagrant-managed-servers/raw/master/dummy.box"
         override.custom.environment = "live"
     end
-
-    config.vm.provision :shell, :path => "bootstrap.sh"
 
     config.vm.provision :puppet do |puppet|
         puppet.module_path       = "puppet/modules"
