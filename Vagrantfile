@@ -1,20 +1,5 @@
-module CustomConfiguration
-    class Config < Vagrant.plugin("2", :config)
-        attr_accessor :environment
-        attr_accessor :hostname
-    end
-
-    class Plugin < Vagrant.plugin("2")
-        name 'Custom configuration variables plugin'
-
-        config 'custom'  do
-            Config
-        end
-    end
-end
 
 Vagrant.configure("2") do |config|
-    config.custom.environment = "dev"
     # Installs puppet and GPG (for hieraGPG)
     config.vm.provision :shell, :path => "bootstrap.sh"
     config.vm.provision :puppet do |puppet|
@@ -29,7 +14,6 @@ Vagrant.configure("2") do |config|
 
     # MakkhBox
     config.vm.define :makkhbox, primary: true do |makkhbox|
-        makkhbox.custom.hostname = "makkhbox"
         makkhbox.vm.provider :virtualbox do |vb, override|
             override.vm.box = "Arch_Linux_2013.08_x64"
 
@@ -46,7 +30,6 @@ Vagrant.configure("2") do |config|
 
     # Raspberry Pi Media Center
     config.vm.define :makkhpi do |makkhpi|
-        makkhpi.custom.hostname = "makkhpi"
         #TODO: QEMU/libvirt configuration
         #makkhpi.vm.provider :kvm do |kvm, override|
         #    kvm.qemu_bin = "qemu-system-arm"
@@ -58,6 +41,5 @@ Vagrant.configure("2") do |config|
         managed.server              = config.custom.hostname
         override.vm.box             = "dummy"
         override.vm.box_url         = "https://github.com/tknerr/vagrant-managed-servers/raw/master/dummy.box"
-        override.custom.environment = "live"
     end
 end
