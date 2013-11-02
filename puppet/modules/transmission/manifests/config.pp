@@ -3,6 +3,9 @@ class transmission::config inherits transmission {
         ensure  => directory,
         owner   => $service_user,
         group   => $service_group,
+        source  => 'puppet:///modules/transmission/var/lib/transmission/.config',
+        recurse => true,
+        ignore  => '.gitignore',
     }->
     file { "${conf_dir}/transmission-daemon/settings.json":
         ensure  => file,
