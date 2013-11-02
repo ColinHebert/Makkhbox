@@ -5,6 +5,8 @@ def managed(config, hostname)
         override.vm.box     = 'dummy'
         override.vm.box_url = 'https://github.com/tknerr/vagrant-managed-servers/raw/master/dummy.box'
     end
+    # Hack to set the puppet facter env
+    $global_config.vm.provisioners[1].config.facter['env'] = 'live'
 end
 
 Vagrant.configure("2") do |config|
