@@ -13,7 +13,6 @@ module CustomConfiguration
 end
 
 Vagrant.configure("2") do |config|
-    config.ssh.shell = "/bin/zsh -l"
     config.custom.environment = "dev"
 
     config.vm.provider :virtualbox do |vb, override|
