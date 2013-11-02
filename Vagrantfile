@@ -35,8 +35,9 @@ Vagrant.configure("2") do |config|
         end
     end
 
+    # Configuration to provision production environment from Vagrant
     config.vm.provider :managed do |managed, override|
-        managed.server = "makkhbox"
+        managed.server              = config.custom.hostname
         override.vm.box             = "dummy"
         override.vm.box_url         = "https://github.com/tknerr/vagrant-managed-servers/raw/master/dummy.box"
         override.custom.environment = "live"
