@@ -27,7 +27,7 @@ Vagrant.configure('2') do |config|
 
     # MakkhBox
     config.vm.define :makkhbox, primary: true do |makkhbox|
-        makkhbox.vm.box = 'Arch_Linux_2013.08_x64'
+        makkhbox.vm.box = 'Arch_Linux_2013.11_x64'
 
         # Create a forwarded port mapping which allows access to a specific port
         # within the machine from a port on the host machine. In the example below,
