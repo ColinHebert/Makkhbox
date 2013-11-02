@@ -1,3 +1,11 @@
+# Configuration to provision production environment from Vagrant
+def managed(config, hostname)
+    config.vm.provider :managed do |managed, override|
+        managed.server      = hostname
+        override.vm.box     = 'dummy'
+        override.vm.box_url = 'https://github.com/tknerr/vagrant-managed-servers/raw/master/dummy.box'
+    end
+end
 
 Vagrant.configure("2") do |config|
     # Installs puppet and GPG (for hieraGPG)
@@ -26,6 +34,7 @@ Vagrant.configure("2") do |config|
 
             vb.customize ["modifyvm", :id, "--memory", "512", "--cpus", "1"]
         end
+        managed(makkhbox, 'makkhbox')
     end
 
     # Raspberry Pi Media Center
@@ -34,12 +43,6 @@ Vagrant.configure("2") do |config|
         #makkhpi.vm.provider :kvm do |kvm, override|
         #    kvm.qemu_bin = "qemu-system-arm"
         #end
-    end
-
-    # Configuration to provision production environment from Vagrant
-    config.vm.provider :managed do |managed, override|
-        managed.server              = config.custom.hostname
-        override.vm.box             = "dummy"
-        override.vm.box_url         = "https://github.com/tknerr/vagrant-managed-servers/raw/master/dummy.box"
+        managed(makkhpi, 'makkhpi')
     end
 end
