@@ -32,9 +32,9 @@ Vagrant.configure('2') do |config|
         # Create a forwarded port mapping which allows access to a specific port
         # within the machine from a port on the host machine. In the example below,
         # accessing "localhost:8080" will access port 80 on the guest machine.
-        makkhbox.vm.network :forwarded_port, guest: 80,   host: 8080
-        makkhbox.vm.network :forwarded_port, guest: 22,   host: 5331
-        makkhbox.vm.network :forwarded_port, guest: 9091, host: 9091
+        makkhbox.vm.network :forwarded_port, guest: 80,   host: 8080, auto_correct: true
+        makkhbox.vm.network :forwarded_port, guest: 22,   host: 5331, auto_correct: true
+        makkhbox.vm.network :forwarded_port, guest: 9091, host: 9091, auto_correct: true
 
         makkhbox.vm.provider :virtualbox do |vb, override|
             vb.customize ['modifyvm', :id, '--memory', '512', '--cpus', '1']
