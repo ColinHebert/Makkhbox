@@ -17,6 +17,15 @@ Vagrant.configure("2") do |config|
     config.custom.environment = "dev"
     # Installs puppet and GPG (for hieraGPG)
     config.vm.provision :shell, :path => "bootstrap.sh"
+    config.vm.provision :puppet do |puppet|
+        puppet.module_path       = 'puppet/modules'
+        puppet.manifests_path    = 'puppet/manifests'
+        puppet.manifest_file     = 'makkhbox.pp'
+        puppet.hiera_config_path = 'puppet/hiera.yaml'
+        puppet.working_directory = '/vagrant/puppet'
+        puppet.facter['env']     = 'dev'
+        #puppet.options           = '--verbose --debug'
+    end
 
     # MakkhBox
     config.vm.define :makkhbox, primary: true do |makkhbox|
@@ -50,15 +59,5 @@ Vagrant.configure("2") do |config|
         override.vm.box             = "dummy"
         override.vm.box_url         = "https://github.com/tknerr/vagrant-managed-servers/raw/master/dummy.box"
         override.custom.environment = "live"
-    end
-
-    config.vm.provision :puppet do |puppet|
-        puppet.module_path       = "puppet/modules"
-        puppet.manifests_path    = "puppet/manifests"
-        puppet.manifest_file     = "makkhbox.pp"
-        puppet.hiera_config_path = "puppet/hiera.yaml"
-        puppet.working_directory = "/vagrant/puppet"
-        #puppet.options           = "--verbose --debug"
-        puppet.facter["env"]     = config.custom.environment
     end
 end
