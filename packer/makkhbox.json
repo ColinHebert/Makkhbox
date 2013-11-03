@@ -27,7 +27,6 @@
         },
         {
             "type": "shell",
-            "start_retry_timeout": "1m",
             "scripts": [
                 "ArchLinux_64/base.sh",
                 "ArchLinux_64/pacman.sh",
