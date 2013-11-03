@@ -2,7 +2,6 @@
 
 # Requires
 #   reboot.sh
-#   user.sh
 
 # Adapted from https://wiki.archlinux.org/index.php/VirtualBox
 
