@@ -12,11 +12,10 @@
         "boot_wait": "5s",
         "boot_command": [
             "<enter><wait10><wait10>",
-            "echo 'sshd: ALL' > /etc/hosts.allow<enter>",
             "passwd<enter>",
             "packer<enter>",
             "packer<enter>",
-            "systemctl start sshd.service<enter><wait>"
+            "systemctl start sshd.socket<enter><wait>"
         ]
     }],
 
