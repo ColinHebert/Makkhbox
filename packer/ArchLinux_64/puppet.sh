@@ -3,7 +3,7 @@
 # Requires
 #   aur.sh
 
-yaourt -S --noconfirm puppet
+yaourt --noconfirm -S puppet
 
 # Don't install RDoc and RI to save time and space
 cat <<EOF >> /etc/gemrc

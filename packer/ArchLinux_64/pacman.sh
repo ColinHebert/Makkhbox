@@ -20,5 +20,5 @@ pacman-db-upgrade
 pacman -Syy
 
 # Remove reflector as not required anymore
-pacman -Rns --noconfirm reflector
+pacman --noconfirm -Rns reflector
 ENDCHROOT
