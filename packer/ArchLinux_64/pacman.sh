@@ -3,10 +3,6 @@
 # Requires
 #   base.sh
 
-if [ -f .veewee_params ]; then
-  . .veewee_params
-fi
-
 # PACMAN_REFLECTOR_ARGS can be used to pick a suitable mirror for pacman
 if [ -z "$PACMAN_REFLECTOR_ARGS" ]; then
   export PACMAN_REFLECTOR_ARGS='--verbose -l 5 --sort rate --save /etc/pacman.d/mirrorlist'
