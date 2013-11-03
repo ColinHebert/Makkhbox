@@ -4,7 +4,7 @@
 #   basedevel.sh
 #   user.sh
 
-cat <<EOF >> /etc/pacman.d/mirrorlist
+cat <<'EOF' >> /etc/pacman.d/mirrorlist
 [archlinuxfr]
 SigLevel = Never
 Server = http://repo.archlinux.fr/$arch
