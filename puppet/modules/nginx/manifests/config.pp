@@ -1,21 +1,12 @@
 class nginx::config inherits nginx {
-    file {"${conf_dir}/nginx.conf":
-        ensure  => present,
-        mode    => '0644',
-        owner   => 'root',
-        group   => 'root',
-        source  => 'puppet:///modules/nginx/nginx.conf',
-        notify  => Service['nginx'],
-    }
-
-    # Custom conf directories
-    file {["${conf_dir}/conf.d",
-            "${conf_dir}/sites-available",
-            "${conf_dir}/sites-enabled"]:
+    file {"${conf_dir}":
         ensure  => directory,
-        mode    => '0644',
         owner   => 'root',
+        mode    => '0644',
         group   => 'root',
+        source  => 'puppet:///modules/nginx/etc/nginx',
+        recurse => true,
+        notify  => Service['nginx'],
     }
 
     # Remove default files
