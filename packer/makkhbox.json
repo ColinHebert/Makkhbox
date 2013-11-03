@@ -35,7 +35,6 @@
                 "ArchLinux_64/bootloader.sh",
                 "ArchLinux_64/ssh.sh",
                 "ArchLinux_64/reboot.sh",
-                "ArchLinux_64/basedevel.sh",
                 "ArchLinux_64/sudo.sh",
                 "ArchLinux_64/user.sh",
                 "ArchLinux_64/aur.sh",
