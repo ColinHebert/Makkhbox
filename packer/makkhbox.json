@@ -20,27 +20,35 @@
         ]
     }],
 
-    "provisioners": [{
-        "type": "shell",
-        "scripts": [
-            "ArchLinux_64/base.sh",
-            "ArchLinux_64/pacman.sh",
-            "ArchLinux_64/bootloader.sh",
-            "ArchLinux_64/ssh.sh",
-            "ArchLinux_64/reboot.sh",
-            "ArchLinux_64/basedevel.sh",
-            "ArchLinux_64/sudo.sh",
-            "ArchLinux_64/user.sh",
-            "ArchLinux_64/aur.sh",
-            "ArchLinux_64/virtualbox.sh",
-            "ArchLinux_64/puppet.sh",
-            "ArchLinux_64/vagrant.sh",
-            "ArchLinux_64/reboot.sh",
-            "ArchLinux_64/cleanup.sh",
-            "ArchLinux_64/zerodisk.sh"
-        ],
-        "only": ["virtualbox"]
-    }],
+    "provisioners": [
+        {
+            "type": "shell",
+            "inline": ["echo 'Server = http://mirror.internode.on.net/pub/archlinux/$repo/os/$arch' > /etc/pacman.d/mirrorlist"],
+            "only": ["virtualbox"]
+        },
+        {
+            "type": "shell",
+            "start_retry_timeout": "1m",
+            "scripts": [
+                "ArchLinux_64/base.sh",
+                "ArchLinux_64/pacman.sh",
+                "ArchLinux_64/bootloader.sh",
+                "ArchLinux_64/ssh.sh",
+                "ArchLinux_64/reboot.sh",
+                "ArchLinux_64/basedevel.sh",
+                "ArchLinux_64/sudo.sh",
+                "ArchLinux_64/user.sh",
+                "ArchLinux_64/aur.sh",
+                "ArchLinux_64/virtualbox.sh",
+                "ArchLinux_64/puppet.sh",
+                "ArchLinux_64/vagrant.sh",
+                "ArchLinux_64/reboot.sh",
+                "ArchLinux_64/cleanup.sh",
+                "ArchLinux_64/zerodisk.sh"
+            ],
+            "only": ["virtualbox"]
+        }
+    ],
 
     "post-processors": [{
         "type": "vagrant",
