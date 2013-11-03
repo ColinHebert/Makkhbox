@@ -14,5 +14,5 @@ echo "sshd:	ALL" > /etc/hosts.allow
 echo "ALL:	ALL" > /etc/hosts.deny
 
 # Make sure sshd starts on boot
-systemctl enable sshd.service
+systemctl enable sshd.socket
 ENDCHROOT
