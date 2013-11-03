@@ -4,7 +4,7 @@
 #   pacman.sh
 
 # Chroot into the new system and set up SSH access
-arch-chroot /mnt <<ENDCHROOT
+arch-chroot /mnt << ENDCHROOT
 pacman -S --noconfirm openssh
 
 # Make sure SSH is allowed

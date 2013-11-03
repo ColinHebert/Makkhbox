@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Partition disk
-fdisk /dev/sda << EOF
+fdisk /dev/sda <<'EOF'
 n
 p
 1
@@ -21,12 +21,12 @@ pacstrap /mnt base reflector
 genfstab -U /mnt >> /mnt/etc/fstab
 
 # Chroot into the new system
-arch-chroot /mnt <<ENDCHROOT
+arch-chroot /mnt << ENDCHROOT
 # Enable DHCP
 systemctl enable dhcpcd
 
 # Set root password
-passwd<<EOF
+passwd<<'EOF'
 packer
 packer
 EOF

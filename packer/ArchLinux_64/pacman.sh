@@ -13,7 +13,7 @@ if [ -z "$PACMAN_REFLECTOR_ARGS" ]; then
 fi
 
 # Chroot into the new system and set up Pacman and the mirrorlist
-arch-chroot /mnt <<ENDCHROOT
+arch-chroot /mnt << ENDCHROOT
 # Update the mirrorlist to 5 recently updated mirrors sorted by download rate
 reflector $PACMAN_REFLECTOR_ARGS
 
