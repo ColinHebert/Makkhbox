@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Requires
-#   user.sh
+#   reboot.sh
 
 cat <<'EOF' >> /etc/pacman.conf
 [archlinuxfr]
