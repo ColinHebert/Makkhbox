@@ -16,7 +16,7 @@ mkfs.ext4 /dev/sda1
 
 # Install the base system
 mount /dev/sda1 /mnt
-# Get reflector so that we can update the mirrorlist
+# Get reflector so we can update the mirrorlist
 pacstrap /mnt base reflector
 genfstab -U /mnt >> /mnt/etc/fstab
 
