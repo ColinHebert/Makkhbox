@@ -1,0 +1,49 @@
+{
+    "builders": [{
+        "type": "virtualbox",
+        "headless": true,
+        "guest_os_type": "ArchLinux_64",
+        "iso_url": "http://mirrors.kernel.org/archlinux/iso/2013.11.01/archlinux-2013.11.01-dual.iso",
+        "iso_checksum": "4fd51d23d09009da3eb34c92d40a56a1c047515e",
+        "iso_checksum_type": "sha1",
+        "ssh_username": "root",
+        "ssh_password": "packer",
+        "shutdown_command": "echo 'packer' | sudo -S shutdown -P now",
+        "boot_wait": "5s",
+        "boot_command": [
+            "<enter><wait10><wait10>",
+            "echo 'sshd: ALL' > /etc/hosts.allow<enter>",
+            "passwd<enter>",
+            "packer<enter>",
+            "packer<enter>",
+            "systemctl start sshd.service<enter><wait>"
+        ]
+    }],
+
+    "provisioners": [{
+        "type": "shell",
+        "scripts": [
+            "ArchLinux_64/base.sh",
+            "ArchLinux_64/pacman.sh",
+            "ArchLinux_64/bootloader.sh",
+            "ArchLinux_64/ssh.sh",
+            "ArchLinux_64/reboot.sh",
+            "ArchLinux_64/basedevel.sh",
+            "ArchLinux_64/sudo.sh",
+            "ArchLinux_64/user.sh",
+            "ArchLinux_64/aur.sh",
+            "ArchLinux_64/virtualbox.sh",
+            "ArchLinux_64/puppet.sh",
+            "ArchLinux_64/vagrant.sh",
+            "ArchLinux_64/reboot.sh",
+            "ArchLinux_64/cleanup.sh",
+            "ArchLinux_64/zerodisk.sh"
+        ],
+        "only": ["virtualbox"]
+    }],
+
+    "post-processors": [{
+        "type": "vagrant",
+        "only": ["virtualbox"]
+    }]
+}
