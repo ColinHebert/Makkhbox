@@ -17,7 +17,6 @@ EOF
 
 # For shared folders to work
 groupadd vboxsf
-gpasswd -a packer vboxsf
 
 # To synchronise guest date with host and for auto-mounting of shared folders
 systemctl enable vboxservice.service
