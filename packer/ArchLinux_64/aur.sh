@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # Requires
-#   basedevel.sh
 #   user.sh
 
 cat <<'EOF' >> /etc/pacman.d/mirrorlist

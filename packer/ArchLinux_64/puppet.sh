@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # Requires
-#   ruby.sh
 #   aur.sh
 
 # Change TMPDIR for packer to stop /tmp from filling up during install
