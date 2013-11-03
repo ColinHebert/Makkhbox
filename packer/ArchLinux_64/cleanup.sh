@@ -3,7 +3,11 @@
 # Requires
 #   reboot.sh
 
-# Clean up
+# Clean up the SSH configuration
+systemctl disable sshd.socket
+systemctl enable sshd.service
+
+# Clean up the bash history
 # http://vstone.eu/reducing-vagrant-box-size/
 unset HISTFILE
 [ -f /root/.bash_history ] && rm /root/.bash_history
