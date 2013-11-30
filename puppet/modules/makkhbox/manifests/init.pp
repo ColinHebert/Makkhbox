@@ -2,8 +2,10 @@ class makkhbox (
  $ssh_port = $makkhbox::params::ssh_port,
  $users    = $makkhbox::params::users,
 ) inherits makkhbox::params {
-  validate_integer($ssh_port)
-  array($users)
+  if ! is_integer($ssh_port){
+      fail("The SSH port must be an integer")
+  }
+  validate_array($users)
 
   anchor { 'makkhbox::begin': } ->
   class  { '::makkhbox::install': } ->
