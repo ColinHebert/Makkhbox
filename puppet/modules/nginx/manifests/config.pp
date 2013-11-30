@@ -6,6 +6,7 @@ class nginx::config inherits nginx {
         group   => 'root',
         source  => 'puppet:///modules/nginx/etc/nginx',
         recurse => true,
+        ignore  => '.gitignore',
         notify  => Service['nginx'],
     }
 
