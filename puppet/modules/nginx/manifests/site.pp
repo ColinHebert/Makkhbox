@@ -1,4 +1,8 @@
-define nginx::site($ensure='present', $content) {
+define nginx::site(
+    $ensure  = 'present',
+    $content = undef,
+    $source  = undef
+) {
 
     validate_re($ensure, '^(present|absent)$',
         "${ensure} is not supported for ensure.
@@ -11,6 +15,7 @@ define nginx::site($ensure='present', $content) {
                 mode    => '0644',
                 owner   => 'root',
                 group   => 'root',
+                source  => $source,
                 content => $content,
                 require => Package['nginx'],
             }->
