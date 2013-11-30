@@ -1,4 +1,9 @@
 define nginx::site($ensure='present', $content) {
+
+    validate_re($ensure, '^(present|absent)$',
+        "${ensure} is not supported for ensure.
+        Allowed values are 'present' and 'absent'.")
+
     case $ensure {
         'present' : {
             file {"${nginx::conf_dir}/sites-available/${name}.conf":
@@ -23,9 +28,6 @@ define nginx::site($ensure='present', $content) {
                 require => Package['nginx'],
                 notify  => Service['nginx'],
             }
-        }
-        default : {
-            err ("Unknown ensure value: '$ensure'")
         }
     }
 }
