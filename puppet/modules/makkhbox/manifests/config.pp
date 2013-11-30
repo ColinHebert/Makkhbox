@@ -28,4 +28,11 @@ class makkhbox::config inherits makkhbox {
 #            key    => strip(hiera('Colin-Hebert.pub'))
 #        }
 #    }
+
+    nginx::site { "default":
+      source  => 'puppet:///modules/makkhbox/etc/nginx/sites-available/default.conf',
+    }
+    nginx::site { "transmission":
+      source  => 'puppet:///modules/makkhbox/etc/nginx/sites-available/transmission.conf',
+    }
 }
