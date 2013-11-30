@@ -1,5 +1,5 @@
 Exec { path => [ '/bin/', '/sbin/' , '/usr/bin/', '/usr/sbin/' ] }
-exec {'pacman -Sy ':}->Package <| |>
+exec {'pacman -Sy':}->Package <| |>
 
 include transmission
 #include dotfiles

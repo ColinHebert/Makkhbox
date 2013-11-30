@@ -16,11 +16,12 @@ define nginx::site($ensure='present', $content) {
                 notify  => Service['nginx'],
             }
         }
+
         'absent' : {
             file {"${conf_dir}/sites-enabled/${name}":
                 ensure => absent,
-                notify  => Service['nginx'],
                 require => Package['nginx'],
+                notify  => Service['nginx'],
             }
         }
         default : {
